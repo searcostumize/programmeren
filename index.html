@@ -1,15 +1,29 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lineair Zoeken</title>
+    <title>Linear Search in JavaScript</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Lineair Zoeken Algoritme</h1>
-    <input type="number" id="doelwit" placeholder="Voer een getal in">
-    <button onclick="zoekGetal()">Zoek</button>
-    <p id="resultaat"></p>
+    <h1>Linear Search Web Application</h1>
+    <div>
+        <label for="arraySize">Enter number of elements:</label>
+        <input type="number" id="arraySize" placeholder="e.g. 100">
+    </div>
+    <button onclick="generateRandomArray()">Generate Random Array</button>
+    <div>
+        <label for="generatedArray">Generated array:</label>
+        <textarea id="generatedArray" readonly></textarea>
+    </div>
+    <div>
+        <label for="searchValue">Enter value to search:</label>
+        <input type="number" id="searchValue" placeholder="e.g. 3">
+    </div>
+    <button onclick="linearSearch()">Search</button>
+    <p id="result"></p>
+
     <script src="script.js"></script>
 </body>
 </html>
