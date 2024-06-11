@@ -10,7 +10,7 @@ function generateRandomArray() {
         array.push(Math.floor(Math.random() * 100) + 1);  // Generating random numbers between 1 and 100
     }
 
-    document.getElementById('generatedArray').value = array.join(',');
+    document.getElementById('generatedArray').value = array.join(', ');
 }
 
 function linearSearch() {
@@ -37,3 +37,4 @@ function linearSearchArray(array, value) {
     }
     return -1;
 }
+
