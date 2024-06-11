@@ -1,32 +1,39 @@
-// Functie om lineair zoeken uit te voeren
-var lineairZoeken = function(array, doel) {
-    for (var i = 0; i < array.length; i++) { 
-      if (array[i] === doel) {
-        return i;
-      }
+function generateRandomArray() {
+    const arraySize = document.getElementById('arraySize').value;
+    if (!arraySize || arraySize <= 0) {
+        alert('Please enter a valid number of elements.');
+        return;
+    }
+
+    const array = [];
+    for (let i = 0; i < arraySize; i++) {
+        array.push(Math.floor(Math.random() * 100) + 1);  // Generating random numbers between 1 and 100
+    }
+
+    document.getElementById('generatedArray').value = array.join(', ');
+}
+
+function linearSearch() {
+    const arrayInput = document.getElementById('generatedArray').value;
+    const searchValue = document.getElementById('searchValue').value;
+    const array = arrayInput.split(',').map(Number);
+    const value = Number(searchValue);
+
+    const index = linearSearchArray(array, value);
+    const resultElement = document.getElementById('result');
+
+    if (index !== -1) {
+        resultElement.textContent = `Value "${value}" found at index ${index}.`;
+    } else {
+        resultElement.textContent = `Value "${value}" not found in the array.`;
+    }
+}
+
+function linearSearchArray(array, value) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === value) {
+            return i;
+        }
     }
     return -1;
-  };
-  // Functie om een array van 50 willekeurige getallen tussen 1 en 100 te genereren
-  var genereerWillekeurigeGetallen = function() {
-    var getallen = [];
-    for (var i = 0; i < 50; i++) {
-      getallen.push(Math.floor(Math.random() * 100) + 1);
-    }
-    return getallen;
-  }; 
-  // Array met 50 willekeurige getallen
-  var cijfers = genereerWillekeurigeGetallen();
-  console.log("Gegenereerde cijfers:", cijfers);
-  // Functie om het zoeken te starten wanneer de knop wordt ingedrukt
-  var zoekGetal = function() {
-    var doelwitElement = document.getElementById("doelwit");
-    var doelwit = parseInt(doelwitElement.value);
-    var resultaat = lineairZoeken(cijfers, doelwit);
-    var resultaatElement = document.getElementById("resultaat");
-    if (resultaat !== -1) {
-      resultaatElement.textContent = "Doelwit " + doelwit + " gevonden op index: " + resultaat;
-    } else {
-      resultaatElement.textContent = "Doelwit " + doelwit + " niet gevonden in de array.";
-    }
-  };
+}
