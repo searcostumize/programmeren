@@ -14,22 +14,26 @@ div {
 }
 
 label {
-    display: inline-block;
-    width: 200px;
+    margin-right: 10px;
 }
 
 input {
-    width: 200px;
     padding: 5px;
 }
 
 button {
-    padding: 5px 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
     cursor: pointer;
 }
 
-p {
-    font-size: 1.2em;
-    color: #333;
+button:hover {
+    background-color: #0056b3;
 }
 
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+}
