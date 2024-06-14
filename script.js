@@ -44,11 +44,12 @@ function binarySearch() {
     const searchValue = document.getElementById('searchValue').value;
     let array = arrayInput.split(',').map(Number);
     
-    bubbleSortArray(array);  // Sort the array with bubble sort
-    document.getElementById('sortedArray').value = array.join(', ');  // Display the sorted array
+    const sortedArray = [...array]; // Create a copy of the array for sorting
+    bubbleSortArray(sortedArray);  // Sort the array with bubble sort
+    document.getElementById('sortedArray').value = sortedArray.join(', ');  // Display the sorted array
 
     const value = Number(searchValue);
-    const index = binarySearchArray(array, value);
+    const index = binarySearchArray(sortedArray, value);
     const resultElement = document.getElementById('searchResult');
 
     if (index !== -1) {
@@ -79,9 +80,10 @@ function bubbleSort() {
     const arrayInput = document.getElementById('generatedArray').value;
     let array = arrayInput.split(',').map(Number);
 
-    bubbleSortArray(array);
+    const sortedArray = [...array]; // Create a copy of the array for sorting
+    bubbleSortArray(sortedArray);
 
-    document.getElementById('sortedArray').value = array.join(', ');
+    document.getElementById('sortedArray').value = sortedArray.join(', ');
     document.getElementById('sortResult').textContent = 'Array sorted using Bubble Sort.';
 }
 
