@@ -20,7 +20,7 @@ function linearSearch() {
     const value = Number(searchValue);
 
     const index = linearSearchArray(array, value);
-    const resultElement = document.getElementById('result');
+    const resultElement = document.getElementById('searchResult');
 
     if (index !== -1) {
         resultElement.textContent = `Value "${value}" found at index ${index}.`;
@@ -36,4 +36,54 @@ function linearSearchArray(array, value) {
         }
     }
     return -1;
+}
+
+function binarySearch() {
+    const arrayInput = document.getElementById('generatedArray').value;
+    const searchValue = document.getElementById('searchValue').value;
+    let array = arrayInput.split(',').map(Number);
+    array.sort((a, b) => a - b);  // Sort the array for binary search
+    const value = Number(searchValue);
+
+    const index = binarySearchArray(array, value);
+    const resultElement = document.getElementById('searchResult');
+
+    if (index !== -1) {
+        resultElement.textContent = `Value "${value}" found at index ${index} in the sorted array.`;
+    } else {
+        resultElement.textContent = `Value "${value}" not found in the array.`;
+    }
+}
+
+function binarySearchArray(array, value) {
+    let left = 0;
+    let right = array.length - 1;
+
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+        if (array[mid] === value) {
+            return mid;
+        } else if (array[mid] < value) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return -1;
+}
+
+function bubbleSort() {
+    const arrayInput = document.getElementById('generatedArray').value;
+    let array = arrayInput.split(',').map(Number);
+
+    for (let i = 0; i < array.length - 1; i++) {
+        for (let j = 0; j < array.length - 1 - i; j++) {
+            if (array[j] > array[j + 1]) {
+                [array[j], array[j + 1]] = [array[j + 1], array[j]];  // Swap elements
+            }
+        }
+    }
+
+    document.getElementById('generatedArray').value = array.join(', ');
+    document.getElementById('sortResult').textContent = 'Array sorted using Bubble Sort.';
 }
