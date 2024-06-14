@@ -11,6 +11,7 @@ function generateRandomArray() {
     }
 
     document.getElementById('generatedArray').value = array.join(', ');
+    document.getElementById('sortedArray').value = '';  // Clear sorted array
 }
 
 function linearSearch() {
@@ -44,7 +45,7 @@ function binarySearch() {
     let array = arrayInput.split(',').map(Number);
     
     bubbleSortArray(array);  // Sort the array with bubble sort
-    document.getElementById('generatedArray').value = array.join(', ');  // Display the sorted array
+    document.getElementById('sortedArray').value = array.join(', ');  // Display the sorted array
 
     const value = Number(searchValue);
     const index = binarySearchArray(array, value);
@@ -80,7 +81,7 @@ function bubbleSort() {
 
     bubbleSortArray(array);
 
-    document.getElementById('generatedArray').value = array.join(', ');
+    document.getElementById('sortedArray').value = array.join(', ');
     document.getElementById('sortResult').textContent = 'Array sorted using Bubble Sort.';
 }
 
